@@ -24,35 +24,7 @@ public class Deck {
 	private Deck(){
 		fillDeckWithAllCards();
 	}
-	
-	public void fromFile(File file) throws IOException {
-            Scanner scanner=null;
-            try {
-                scanner = new Scanner(file);
-                for (String card : scanner.nextLine().split(", ")) {
-                   for(Card.Suit suit: Card.Suit.values()){
-                		if(card.substring(1).equalsIgnoreCase(suit.toString())) {
-                			cards.push(new Card(Enum.valueOf(Suit.class, card.substring(1, card.length()).toString()),
-                					Enum.valueOf(Face.class, card.substring(0, 1).toString())));
-                		}
-                		else if(card.substring(2).equalsIgnoreCase(suit.toString())) {
-                			cards.push(new Card(Enum.valueOf(Suit.class, card.substring(2, card.length()).toString()),
-                					Enum.valueOf(Face.class, card.substring(0, 2).toString())));
-                		}
-                	}
-                }
-
-
-            } finally {
-                if (scanner!=null) {
-                    scanner.close();
-                }
-            }
-          
-	}
-
-
-	
+		
     public Card draw() {
         if (cards.isEmpty()) {
             fillDeckWithAllCards();
